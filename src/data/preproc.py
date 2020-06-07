@@ -99,8 +99,6 @@ Preprocess metodology based in:
 
 
 def preprocess(img, input_size):
-    """Make the process with the `input_size` to the scale resize"""
-
     def imread(path):
         img = cv2.imread(path, cv2.IMREAD_UNCHANGED)
 
@@ -127,7 +125,7 @@ def preprocess(img, input_size):
 
         img = np.asarray(img[boundbox[0]:boundbox[1], boundbox[2]:boundbox[3]], dtype=np.uint8)
 
-    wt, ht, _ = input_size
+    wt, ht = input_size
     h, w = np.asarray(img).shape
     f = max((w / wt), (h / ht))
     new_size = (max(min(wt, int(w / f)), 1), max(min(ht, int(h / f)), 1))
